@@ -1,0 +1,158 @@
+Microsoft Windows [Version 10.0.19044.2486]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Hp>cd documents
+
+C:\Users\Hp\Documents>cd sql
+
+C:\Users\Hp\Documents\sql>sqlite3.exe
+SQLite version 3.40.1 2022-12-28 14:03:47
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite>
+
+C:\Users\Hp\Documents\sql>sqlite3.exe my_school.sqlite3
+SQLite version 3.40.1 2022-12-28 14:03:47
+Enter ".help" for usage hints.
+sqlite> .table
+murid    teacher
+sqlite> select * from murid;
+sqlite> select * from teacher
+   ...>
+   ...>
+1|salim|jakarta|080888
+
+C:\Users\Hp\Documents\sql>sqlite3.exe my_school.sqlite3
+SQLite version 3.40.1 2022-12-28 14:03:47
+Enter ".help" for usage hints.
+sqlite> insert into
+   ...> teacher(id,name,addres,phone_number);
+Parse error: near ";": syntax error
+  insert into teacher(id,name,addres,phone_number);
+                                    error here ---^
+sqlite> insert into
+   ...> teacher(id,name,addres,phone_number),
+   ...> ;
+Parse error: near ",": syntax error
+  insert into teacher(id,name,addres,phone_number), ;
+                                    error here ---^
+sqlite> insert into
+   ...> teacher(id,name,addres,phone_number)
+   ...> values
+   ...> (2,'abdurahman','nyc','00975'),
+   ...> (3,'prima','bogor','811003'),
+   ...> (4,'Halim','depok','087879'),
+   ...> (5,'roby','tangerang','123890'),
+   ...> (6,'hanung','tangerang_selatan','45983');
+sqlite> select * from teacher;
+1|salim|jakarta|080888
+2|abdurahman|nyc|00975
+3|prima|bogor|811003
+4|Halim|depok|087879
+5|roby|tangerang|123890
+6|hanung|tangerang_selatan|45983
+sqlite> .headers on
+sqlite> .mode column
+sqlite> select * from teacher
+   ...> select * from teacher;
+Parse error: near "select": syntax error
+  select * from teacher select * from teacher;
+                        ^--- error here
+sqlite> .headers on
+sqlite> .mode column
+sqlite> select * from teacher;
+id  name        addres             phone_number
+--  ----------  -----------------  ------------
+1   salim       jakarta            080888
+2   abdurahman  nyc                00975
+3   prima       bogor              811003
+4   Halim       depok              087879
+5   roby        tangerang          123890
+6   hanung      tangerang_selatan  45983
+sqlite> select * from student;
+Parse error: no such table: student
+sqlite> select * from students;
+Parse error: no such table: students
+sqlite> .table
+murid    teacher
+sqlite> select * from murid;
+sqlite> select * from students;
+Parse error: no such table: students
+sqlite> insert into
+   ...> murid
+   ...> ;
+Parse error: near ";": syntax error
+  insert into murid ;
+                    ^--- error here
+sqlite> insert into
+   ...> murid(
+   ...> ;
+Parse error: near ";": syntax error
+  insert into murid( ;
+                     ^--- error here
+sqlite> insert into
+   ...> murid(id,name,addres,phone_number)
+   ...> values
+   ...> (1,'alfatih','tangerang','898978'),
+   ...> (2,'zaydan','nyc','843583'),
+   ...> (3,'athar','bekasi','132912'),
+   ...> (4,'abdurahman','jakarta','213122'),
+   ...> (5,'akhsan','tangerang_selatan','2342342'),
+   ...> (6,'naufal','london','123123');
+sqlite> select * from murid;
+id  name        addres             phone_number
+--  ----------  -----------------  ------------
+1   alfatih     tangerang          898978
+2   zaydan      nyc                843583
+3   athar       bekasi             132912
+4   abdurahman  jakarta            213122
+5   akhsan      tangerang_selatan  2342342
+6   naufal      london             123123
+sqlite> select name, addres from murid;
+name        addres
+----------  -----------------
+alfatih     tangerang
+zaydan      nyc
+athar       bekasi
+abdurahman  jakarta
+akhsan      tangerang_selatan
+naufal      london
+sqlite> select name, phone_number from teacher;
+name        phone_number
+----------  ------------
+salim       080888
+abdurahman  00975
+prima       811003
+Halim       087879
+roby        123890
+hanung      45983
+sqlite> delete from murid
+   ...> where addres ='london';
+sqlite> select * from murid
+   ...> select * from murid;
+Parse error: near "select": syntax error
+  select * from murid select * from murid;
+                      ^--- error here
+sqlite> select * from murid;
+id  name        addres             phone_number
+--  ----------  -----------------  ------------
+1   alfatih     tangerang          898978
+2   zaydan      nyc                843583
+3   athar       bekasi             132912
+4   abdurahman  jakarta            213122
+5   akhsan      tangerang_selatan  2342342
+sqlite> delete from teacher
+   ...> where name ='roby';
+sqlite> select * from teacher
+   ...> ;
+id  name        addres             phone_number
+--  ----------  -----------------  ------------
+1   salim       jakarta            080888
+2   abdurahman  nyc                00975
+3   prima       bogor              811003
+4   Halim       depok              087879
+6   hanung      tangerang_selatan  45983
+sqlite>
+
+C:\Users\Hp\Documents\sql>
